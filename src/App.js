@@ -34,7 +34,7 @@ const App = () => {
     } else {
       return;
     }
-  }, [isLoggedIn, dispatch]);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (changed || isLoggedIn) {

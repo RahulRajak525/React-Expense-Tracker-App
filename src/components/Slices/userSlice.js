@@ -11,7 +11,7 @@ import {
 const initialState = {
   userDetails: undefined,
   isLoggedIn: false,
-  isPrimeMember : false,
+  isPrimeMember: false,
 };
 const userSlice = createSlice({
   name: "user",
@@ -19,22 +19,18 @@ const userSlice = createSlice({
   reducers: {
     logOut(state) {
       state.userDetails = "";
-      localStorage.removeItem("idToken");
-      localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("localId");
-      localStorage.removeItem("emailId");
+      localStorage.clear();
       state.isLoggedIn = false;
     },
-    isPrimeMember(state){
+    isPrimeMember(state) {
       state.isPrimeMember = true;
     },
-    isNotPrimeMember(state){
+    isNotPrimeMember(state) {
       state.isPrimeMember = false;
-    }
+    },
   },
   extraReducers: (builder) => {
-    builder.addCase(signUpAction.fulfilled, (state, action) => {
-    });
+    builder.addCase(signUpAction.fulfilled, (state, action) => {});
 
     builder.addCase(signInAction.fulfilled, (state, action) => {
       localStorage.setItem("idToken", action.payload.idToken);
@@ -49,7 +45,6 @@ const userSlice = createSlice({
       state.isLoggedIn = true;
     });
     builder.addCase(getUserDataAction.fulfilled, (state, action) => {
-
       state.userDetails = action.payload;
       state.isLoggedIn = true;
     });

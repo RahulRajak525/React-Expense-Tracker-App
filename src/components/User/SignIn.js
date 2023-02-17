@@ -63,7 +63,7 @@ const SignIn = () => {
         })
       );
       setTimeout(() => {
-        dispatch(getUserDataAction());
+        // dispatch(getUserDataAction());
         let localId = localStorage.getItem("localId");
         dispatch(getExpenseDataAction(localId));
         if (localId) {
